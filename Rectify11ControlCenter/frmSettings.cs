@@ -12,6 +12,7 @@ using System.Diagnostics;
 using System.Drawing.Imaging;
 using System.Threading;
 using Microsoft.VisualBasic;
+using Microsoft.Win32;
 
 namespace Rectify11ControlCenter
 {
@@ -23,22 +24,35 @@ namespace Rectify11ControlCenter
             OSname.Text = Rectify11ControlCenter.Controls.osV;
             username.Text = Rectify11ControlCenter.Controls.userN;
             pcname.Text = Rectify11ControlCenter.Controls.CumterName;
-            themeApplied.Text = Rectify11ControlCenter.Controls.theme();
+            themeApplied.Text = "Theme: " + Rectify11ControlCenter.Controls.theme();
             r11Ver.Text = Rectify11ControlCenter.Controls.r11Version;
             themesSec.Text = Rectify11ControlCenter.Controls.themeSection;
             miscSec.Text = Rectify11ControlCenter.Controls.miscSection;
             checkBox2.Text = Rectify11ControlCenter.Controls.mfeChexbox;
             button1.Text = Rectify11ControlCenter.Controls.applyButton;
+            checkBox1.Text = Rectify11ControlCenter.Controls.runAtStart;
+            checkBox1.Checked = false;
+            RegistryKey key = Registry.CurrentUser.CreateSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run");
+            object o = key.GetValue("r11cpl");
+            if (o != null)
+            {
+                checkBox1.Checked = true;
+            }
+            if (Process.GetProcessesByName("micaforeveryone").Length > 0)
+            {
+                checkBox2.Checked = true;
+            }
             for (int i = 0; i < Rectify11ControlCenter.Controls.themefiles.Length; i++)
             {
-                comboBox1.Items.Add(Path.GetFileNameWithoutExtension(Rectify11ControlCenter.Controls.themefiles[i].FullName));
+                var MyIni = new IniFile(Rectify11ControlCenter.Controls.themefiles[i].FullName);
+                string themename = MyIni.Read("DisplayName", "Theme");
+                if (!Path.GetFileNameWithoutExtension(themename).ToLower().Contains("themeui"))
+                {
+                    comboBox1.Items.Add(Path.GetFileNameWithoutExtension(themename));
+                }
             }
-            comboBox1.SelectedItem = Rectify11ControlCenter.Controls.appliedthemefile();
-            deskImg.Image = Properties.Resources.bloom;
-            if (comboBox1.SelectedItem != null)
-            {
-                deskImg.Image = Rectify11ControlCenter.Controls.DeskWall(Path.Combine(Variables.Variables.Windir, "resources", "themes", comboBox1.SelectedItem.ToString() + ".theme"));
-            }
+            comboBox1.SelectedItem = Rectify11ControlCenter.Controls.theme();
+            deskImg.Image = Rectify11ControlCenter.Controls.DeskWall(Rectify11ControlCenter.Controls.appliedthemefile());
             addroundedCorners();
         }
 
@@ -61,13 +75,58 @@ namespace Rectify11ControlCenter
 
         private void button1_Click(object sender, EventArgs e)
         {
-            waiting waiting1 = new waiting(comboBox1.SelectedItem.ToString());
-            waiting1.ShowDialog();
+            apply(comboBox1.SelectedItem.ToString());
             var MyIni = new IniFile(Path.Combine(Variables.Variables.Windir, "Resources", "Themes", comboBox1.SelectedItem.ToString() + ".theme"));
             string themename = MyIni.Read("DisplayName", "Theme");
             themeApplied.Text = "Theme: " + themename;
-            deskImg.Image = Rectify11ControlCenter.Controls.DeskWall(Path.Combine(Variables.Variables.Windir, "resources", "themes", comboBox1.SelectedItem.ToString() + ".theme"));
+            Application.Restart();
+            Application.Exit();
+        }
+        public void apply(string j)
+        {
+            foreach (FileInfo i in Rectify11ControlCenter.Controls.themefiles)
+            {
+                var MyIni = new IniFile(i.FullName);
+                string themename = MyIni.Read("DisplayName", "Theme");
+                if (j.ToLower() == themename.ToLower())
+                {
+                    waiting waiting1 = new waiting(i.FullName, checkBox2.Checked);
+                    waiting1.ShowDialog();
+                    deskImg.Image = Rectify11ControlCenter.Controls.DeskWall(i.FullName);
+                }
+            }
         }
 
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            if (File.Exists(Path.Combine(Variables.Variables.Windir, "ThemeTool.exe")))
+            {
+                Task.Run(() => Interaction.Shell(Path.Combine(Variables.Variables.Windir, "ThemeTool.exe")));
+            }
+            else
+            {
+                string message = "SecureUX ThemeTool not found.";
+                string title = "Error";
+                MessageBoxButtons buttons = MessageBoxButtons.OK;
+                DialogResult result = MessageBox.Show(message, title, buttons, MessageBoxIcon.Error);
+                if (result == DialogResult.OK)
+                {
+                    return;
+                }
+            }
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            RegistryKey key = Registry.CurrentUser.CreateSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run");
+            if (checkBox1.Checked)
+            {
+                key.SetValue("r11cpl", Path.Combine(Variables.Variables.r11Folder, "Rectify11ControlCenter.exe"));
+            }
+            else 
+            {
+                key.DeleteValue("r11cpl");
+            }
+        }
     }
 }
