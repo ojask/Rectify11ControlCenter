@@ -26,7 +26,7 @@ namespace Rectify11ControlCenter
             RegistryKey regKey = Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Themes", false);
             pathTheme = regKey.GetValue("CurrentTheme").ToString();
             regKey.Close();
-            return Path.GetFileNameWithoutExtension(pathTheme);
+            return pathTheme;
         }
         public static string theme()
         {
@@ -38,11 +38,11 @@ namespace Rectify11ControlCenter
             {
                 var MyIni = new IniFile(pathTheme);
                 string themename = MyIni.Read("DisplayName", "Theme");
-                return "Theme: " + themename;
+                return themename;
             }
             else
             {
-                string s = "Theme: Not Implemented";
+                string s = "Not Implemented";
                 return s;
             }
         }
@@ -83,6 +83,7 @@ namespace Rectify11ControlCenter
         public static DirectoryInfo themedir = new DirectoryInfo(Path.Combine(Variables.Variables.Windir, "resources", "themes"));
         public static FileInfo[] themefiles = themedir.GetFiles("*.theme");
         public static string waitingtxt = "Please wait...";
+        public static string runAtStart = "Run at every startup"; 
         #endregion
     }
 }
