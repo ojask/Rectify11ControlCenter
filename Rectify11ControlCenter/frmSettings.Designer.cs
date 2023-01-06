@@ -33,11 +33,11 @@ namespace Rectify11ControlCenter
             this.themesSec = new System.Windows.Forms.GroupBox();
             this.button1 = new System.Windows.Forms.Button();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.previewIMG = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.miscSec = new System.Windows.Forms.GroupBox();
-            this.previewIMG = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.Welcometext = new System.Windows.Forms.Label();
             this.deskImg = new System.Windows.Forms.PictureBox();
@@ -89,9 +89,30 @@ namespace Rectify11ControlCenter
             this.checkBox2.Text = "chexBox2";
             this.checkBox2.UseVisualStyleBackColor = true;
             // 
+            // previewIMG
+            // 
+            this.previewIMG.BackgroundImage = global::Rectify11ControlCenter.Properties.Resources.bloom;
+            this.previewIMG.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.previewIMG.Controls.Add(this.panel2);
+            this.previewIMG.Location = new System.Drawing.Point(15, 28);
+            this.previewIMG.Name = "previewIMG";
+            this.previewIMG.Size = new System.Drawing.Size(125, 84);
+            this.previewIMG.TabIndex = 7;
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.Transparent;
+            this.panel2.BackgroundImage = global::Rectify11ControlCenter.Properties.Resources.LightPreview;
+            this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel2.Location = new System.Drawing.Point(31, 9);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(64, 64);
+            this.panel2.TabIndex = 0;
+            // 
             // linkLabel1
             // 
             this.linkLabel1.AutoSize = true;
+            this.linkLabel1.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this.linkLabel1.LinkColor = System.Drawing.SystemColors.HotTrack;
             this.linkLabel1.Location = new System.Drawing.Point(4, 179);
             this.linkLabel1.Name = "linkLabel1";
@@ -120,26 +141,6 @@ namespace Rectify11ControlCenter
             this.miscSec.TabIndex = 3;
             this.miscSec.TabStop = false;
             this.miscSec.Text = "groupBox2";
-            // 
-            // previewIMG
-            // 
-            this.previewIMG.BackgroundImage = global::Rectify11ControlCenter.Properties.Resources.bloom;
-            this.previewIMG.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.previewIMG.Controls.Add(this.panel2);
-            this.previewIMG.Location = new System.Drawing.Point(15, 28);
-            this.previewIMG.Name = "previewIMG";
-            this.previewIMG.Size = new System.Drawing.Size(125, 84);
-            this.previewIMG.TabIndex = 7;
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.Transparent;
-            this.panel2.BackgroundImage = global::Rectify11ControlCenter.Properties.Resources.LightPreview;
-            this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel2.Location = new System.Drawing.Point(31, 9);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(64, 64);
-            this.panel2.TabIndex = 0;
             // 
             // panel1
             // 
