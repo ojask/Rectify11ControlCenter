@@ -13,6 +13,7 @@ using System.Drawing.Imaging;
 using System.Threading;
 using Microsoft.VisualBasic;
 using Microsoft.Win32;
+using System.Drawing.Drawing2D;
 
 namespace Rectify11ControlCenter
 {
@@ -51,6 +52,7 @@ namespace Rectify11ControlCenter
             }
             deskImg.Image = Rectify11ControlCenter.Controls.DeskWall(Rectify11ControlCenter.Controls.appliedthemefile());
             updatePreviewImg(Rectify11ControlCenter.Controls.appliedthemefile());
+            updatePrevWindow(Rectify11ControlCenter.Controls.appliedthemefile());
             addroundedCorners();
         }
 
@@ -113,18 +115,38 @@ namespace Rectify11ControlCenter
                 }
             }
         }
-
+        private void updatePrevWindow(string j)
+        {
+            foreach (FileInfo i in Rectify11ControlCenter.Controls.themefiles)
+            {
+                var MyIni = new IniFile(i.FullName);
+                string themename = MyIni.Read("DisplayName", "Theme");
+                if (j.ToLower() == themename.ToLower())
+                {
+                    if (File.Exists(i.FullName))
+                    {
+                        var MyIni2 = new IniFile(i.FullName);
+                        string thememode = MyIni2.Read("SystemMode", "VisualStyles");
+                        panel2.BackgroundImage = Properties.Resources.LightPreview;
+                        if (!String.IsNullOrEmpty(thememode) && thememode.ToLower() == "dark")
+                        {
+                            panel2.BackgroundImage = Properties.Resources.DarkPreview;
+                        }
+                    }
+                }
+            }
+        }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             button1.Enabled = true;
             updatePreviewImg(comboBox1.SelectedItem.ToString());
+            updatePrevWindow(comboBox1.SelectedItem.ToString());
             if (comboBox1.SelectedItem == null)
             {
                 button1.Enabled = false;
             }
         }
-
         private void closing(object sender, FormClosingEventArgs e)
         {
         }
@@ -145,4 +167,5 @@ namespace Rectify11ControlCenter
             }
         }
     }
+    
 }
