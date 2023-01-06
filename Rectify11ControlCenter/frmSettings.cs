@@ -122,19 +122,6 @@ namespace Rectify11ControlCenter
             }
         }
 
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
-        {
-            RegistryKey key = Registry.CurrentUser.CreateSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run");
-            if (checkBox1.Checked)
-            {
-                key.SetValue("r11cpl", System.Reflection.Assembly.GetExecutingAssembly().Location);
-            }
-            else 
-            {
-                key.DeleteValue("r11cpl");
-            }
-            key.Close();
-        }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {

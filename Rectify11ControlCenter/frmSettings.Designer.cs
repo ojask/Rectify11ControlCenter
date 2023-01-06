@@ -30,7 +30,6 @@ namespace Rectify11ControlCenter
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSettings));
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.themesSec = new System.Windows.Forms.GroupBox();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.button1 = new System.Windows.Forms.Button();
@@ -53,18 +52,6 @@ namespace Rectify11ControlCenter
             ((System.ComponentModel.ISupportInitialize)(this.deskImg)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.previewImage)).BeginInit();
             this.SuspendLayout();
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(12, 570);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(75, 19);
-            this.checkBox1.TabIndex = 0;
-            this.checkBox1.Text = "chexBox1";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // themesSec
             // 
@@ -241,16 +228,14 @@ namespace Rectify11ControlCenter
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(797, 601);
+            this.ClientSize = new System.Drawing.Size(797, 576);
             this.Controls.Add(this.miscSec);
             this.Controls.Add(this.themesSec);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.checkBox1);
             this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(813, 640);
             this.Name = "frmSettings";
             this.Text = "Rectify11 Control Center";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.closing);
@@ -263,13 +248,10 @@ namespace Rectify11ControlCenter
             ((System.ComponentModel.ISupportInitialize)(this.deskImg)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.previewImage)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label OSname;
         private System.Windows.Forms.PictureBox previewImage;

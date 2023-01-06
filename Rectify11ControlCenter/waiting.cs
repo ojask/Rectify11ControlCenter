@@ -50,6 +50,7 @@ namespace Rectify11ControlCenter
         }
         private async void applyTheme(string name, bool useMfe)
         {
+            await Task.Run(() => Interaction.Shell(Path.Combine(Variables.Variables.sys32Folder, "taskkill.exe") + " /f /im accentcolorizer.exe", AppWinStyle.Hide, true));
             await Task.Run(() => Interaction.Shell(Path.Combine(Variables.Variables.sys32Folder, "cmd.exe") + " /c " + '"' + name + '"' + " & timeout /t 03 /nobreak > NUL & taskkill /f /im systemsettings.exe", AppWinStyle.Hide, true));
             var MyIni = new IniFile(name);
             string themename = MyIni.Read("DisplayName", "Theme");
@@ -84,6 +85,10 @@ namespace Rectify11ControlCenter
             else
             {
                 Interaction.Shell(Path.Combine(Variables.Variables.sys32Folder, "schtasks.exe") + " /delete /f /tn mfe", AppWinStyle.Hide);
+            }
+            if (File.Exists(Path.Combine(Variables.Variables.r11Folder, "extras", "AccentColorizer", "AccentColorizer.exe")))
+            {
+                await Task.Run(() => Interaction.Shell(Path.Combine(Variables.Variables.r11Folder, "extras", "AccentColorizer", "AccentColorizer.exe")));
             }
             this.FormClosing -= new FormClosingEventHandler(this.form_closing);
             this.Close();
