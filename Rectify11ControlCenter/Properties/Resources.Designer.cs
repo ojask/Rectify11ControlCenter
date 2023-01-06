@@ -73,9 +73,29 @@ namespace Rectify11ControlCenter.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap DarkPreview {
+            get {
+                object obj = ResourceManager.GetObject("DarkPreview", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap installprogress {
             get {
                 object obj = ResourceManager.GetObject("installprogress", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap LightPreview {
+            get {
+                object obj = ResourceManager.GetObject("LightPreview", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
