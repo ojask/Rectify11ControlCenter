@@ -36,9 +36,9 @@ namespace Rectify11ControlCenter
             {
                 checkBox2.Checked = true;
             }
-            for (int i = 0; i < Rectify11ControlCenter.Controls.themefiles.Length; i++)
+            foreach (FileInfo i in Rectify11ControlCenter.Controls.themefiles)
             {
-                var MyIni = new IniFile(Rectify11ControlCenter.Controls.themefiles[i].FullName);
+                var MyIni = new IniFile(i.FullName);
                 string themename = MyIni.Read("DisplayName", "Theme");
                 if (!themename.ToLower().Contains("themeui"))
                 {
@@ -46,7 +46,7 @@ namespace Rectify11ControlCenter
                 }
                 else if (themename.ToLower().Contains("themeui"))
                 {
-                    comboBox1.Items.Add(Rectify11ControlCenter.Controls.themefiles[i].Name);
+                    comboBox1.Items.Add(i.FullName);
                 }
             }
             comboBox1.SelectedItem = Rectify11ControlCenter.Controls.theme();

@@ -88,7 +88,14 @@ namespace Rectify11ControlCenter
         public static string mfeChexbox = "Use MicaForEveryone";
         public static string applyButton = "Apply";
         public static DirectoryInfo themedir = new DirectoryInfo(Path.Combine(Variables.Variables.Windir, "resources", "themes"));
-        public static FileInfo[] themefiles = themedir.GetFiles("*.theme");
+        public static DirectoryInfo themedir2 = new DirectoryInfo(Path.Combine(Environment.GetEnvironmentVariable("localappdata"), "microsoft", "windows", "themes"));
+        public static List<System.IO.FileInfo> themefiles = themefilesSystemWide();
+        public static List<System.IO.FileInfo> themefilesSystemWide()
+        {
+            var y = themedir.GetFiles("*.theme").ToList();
+            y.AddRange(themedir2.GetFiles("*.theme"));
+            return y;
+        }
         public static string waitingtxt = "Please wait...";
         public static string runAtStart = "Run at every startup"; 
         #endregion
