@@ -40,9 +40,13 @@ namespace Rectify11ControlCenter
             {
                 var MyIni = new IniFile(Rectify11ControlCenter.Controls.themefiles[i].FullName);
                 string themename = MyIni.Read("DisplayName", "Theme");
-                if (!Path.GetFileNameWithoutExtension(themename).ToLower().Contains("themeui"))
+                if (!themename.ToLower().Contains("themeui"))
                 {
-                    comboBox1.Items.Add(Path.GetFileNameWithoutExtension(themename));
+                    comboBox1.Items.Add(themename);
+                }
+                else if (themename.ToLower().Contains("themeui"))
+                {
+                    comboBox1.Items.Add(Rectify11ControlCenter.Controls.themefiles[i].Name);
                 }
             }
             comboBox1.SelectedItem = Rectify11ControlCenter.Controls.theme();
@@ -52,7 +56,6 @@ namespace Rectify11ControlCenter
             }
             deskImg.Image = Rectify11ControlCenter.Controls.DeskWall(Rectify11ControlCenter.Controls.appliedthemefile());
             updatePreviewImg(Rectify11ControlCenter.Controls.appliedthemefile());
-            updatePrevWindow(Rectify11ControlCenter.Controls.appliedthemefile());
             addroundedCorners();
         }
 
@@ -88,11 +91,17 @@ namespace Rectify11ControlCenter
             {
                 var MyIni = new IniFile(i.FullName);
                 string themename = MyIni.Read("DisplayName", "Theme");
-                if (j.ToLower() == themename.ToLower())
+                if (!j.ToLower().Contains(".theme") && j.ToLower() == themename.ToLower())
                 {
                     waiting waiting1 = new waiting(i.FullName, checkBox2.Checked);
                     waiting1.ShowDialog();
                     deskImg.Image = Rectify11ControlCenter.Controls.DeskWall(i.FullName);
+                }
+                else if (j.ToLower().Contains(".theme") && i.Name.ToLower() == j.ToLower())
+                {
+                    waiting waiting1 = new waiting(Path.Combine(Variables.Variables.Windir, "resources", "themes", j), checkBox2.Checked);
+                    waiting1.ShowDialog();
+                    deskImg.Image = Rectify11ControlCenter.Controls.DeskWall(Path.Combine(Variables.Variables.Windir, "resources", "themes", j));
                 }
             }
         }
@@ -115,33 +124,11 @@ namespace Rectify11ControlCenter
                 }
             }
         }
-        private void updatePrevWindow(string j)
-        {
-            foreach (FileInfo i in Rectify11ControlCenter.Controls.themefiles)
-            {
-                var MyIni = new IniFile(i.FullName);
-                string themename = MyIni.Read("DisplayName", "Theme");
-                if (j.ToLower() == themename.ToLower())
-                {
-                    if (File.Exists(i.FullName))
-                    {
-                        var MyIni2 = new IniFile(i.FullName);
-                        string thememode = MyIni2.Read("SystemMode", "VisualStyles");
-                        panel2.BackgroundImage = Properties.Resources.LightPreview;
-                        if (!String.IsNullOrEmpty(thememode) && thememode.ToLower() == "dark")
-                        {
-                            panel2.BackgroundImage = Properties.Resources.DarkPreview;
-                        }
-                    }
-                }
-            }
-        }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             button1.Enabled = true;
             updatePreviewImg(comboBox1.SelectedItem.ToString());
-            updatePrevWindow(comboBox1.SelectedItem.ToString());
             if (comboBox1.SelectedItem == null)
             {
                 button1.Enabled = false;
@@ -157,13 +144,34 @@ namespace Rectify11ControlCenter
             {
                 var MyIni = new IniFile(i.FullName);
                 string themename = MyIni.Read("DisplayName", "Theme");
-                if (j.ToLower() == themename.ToLower())
+                if (!j.ToLower().Contains(".theme") && j.ToLower() == themename.ToLower())
                 {
                     if (File.Exists(i.FullName))
                     {
                         previewIMG.BackgroundImage = Rectify11ControlCenter.Controls.DeskWall(i.FullName);
+                        var MyIni2 = new IniFile(i.FullName);
+                        string thememode = MyIni2.Read("SystemMode", "VisualStyles");
+                        panel2.BackgroundImage = Properties.Resources.LightPreview;
+                        if (!String.IsNullOrEmpty(thememode) && thememode.ToLower() == "dark")
+                        {
+                            panel2.BackgroundImage = Properties.Resources.DarkPreview;
+                        }
                     }
                 }
+                else if (j.ToLower().Contains(".theme") && i.Name.ToLower() == j.ToLower())
+                {
+                    string h = Path.Combine(Variables.Variables.Windir, "resources", "themes", j);
+
+                    previewIMG.BackgroundImage = Rectify11ControlCenter.Controls.DeskWall(h);
+                    var MyIni2 = new IniFile(h);
+                    string thememode = MyIni2.Read("SystemMode", "VisualStyles");
+                    panel2.BackgroundImage = Properties.Resources.LightPreview;
+                    if (!String.IsNullOrEmpty(thememode) && thememode.ToLower() == "dark")
+                    {
+                        panel2.BackgroundImage = Properties.Resources.DarkPreview;
+                    }
+                }
+
             }
         }
     }

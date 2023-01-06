@@ -38,7 +38,14 @@ namespace Rectify11ControlCenter
             {
                 var MyIni = new IniFile(pathTheme);
                 string themename = MyIni.Read("DisplayName", "Theme");
-                return themename;
+                if (!themename.ToLower().Contains("themeui"))
+                {
+                    return themename;
+                }
+                else
+                {
+                    return Path.GetFileName(pathTheme);
+                }
             }
             else
             {
