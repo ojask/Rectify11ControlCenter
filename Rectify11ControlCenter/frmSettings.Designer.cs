@@ -33,7 +33,6 @@ namespace Rectify11ControlCenter
             this.themesSec = new System.Windows.Forms.GroupBox();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.button1 = new System.Windows.Forms.Button();
-            this.themePrev = new System.Windows.Forms.PictureBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.miscSec = new System.Windows.Forms.GroupBox();
@@ -46,8 +45,8 @@ namespace Rectify11ControlCenter
             this.username = new System.Windows.Forms.Label();
             this.OSname = new System.Windows.Forms.Label();
             this.previewImage = new System.Windows.Forms.PictureBox();
+            this.previewIMG = new System.Windows.Forms.Panel();
             this.themesSec.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.themePrev)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.deskImg)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.previewImage)).BeginInit();
@@ -56,10 +55,10 @@ namespace Rectify11ControlCenter
             // themesSec
             // 
             this.themesSec.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.themesSec.Controls.Add(this.linkLabel1);
             this.themesSec.Controls.Add(this.button1);
-            this.themesSec.Controls.Add(this.themePrev);
             this.themesSec.Controls.Add(this.checkBox2);
+            this.themesSec.Controls.Add(this.previewIMG);
+            this.themesSec.Controls.Add(this.linkLabel1);
             this.themesSec.Controls.Add(this.comboBox1);
             this.themesSec.Location = new System.Drawing.Point(28, 245);
             this.themesSec.Name = "themesSec";
@@ -72,7 +71,7 @@ namespace Rectify11ControlCenter
             // 
             this.linkLabel1.AutoSize = true;
             this.linkLabel1.LinkColor = System.Drawing.SystemColors.HotTrack;
-            this.linkLabel1.Location = new System.Drawing.Point(15, 51);
+            this.linkLabel1.Location = new System.Drawing.Point(4, 179);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(136, 15);
             this.linkLabel1.TabIndex = 6;
@@ -82,28 +81,18 @@ namespace Rectify11ControlCenter
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(17, 155);
+            this.button1.Location = new System.Drawing.Point(261, 160);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(79, 28);
+            this.button1.Size = new System.Drawing.Size(86, 28);
             this.button1.TabIndex = 5;
             this.button1.Text = "butt";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // themePrev
-            // 
-            this.themePrev.Image = global::Rectify11ControlCenter.Properties.Resources.placeholder;
-            this.themePrev.Location = new System.Drawing.Point(210, 22);
-            this.themePrev.Name = "themePrev";
-            this.themePrev.Size = new System.Drawing.Size(135, 99);
-            this.themePrev.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.themePrev.TabIndex = 3;
-            this.themePrev.TabStop = false;
-            // 
             // checkBox2
             // 
             this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(18, 130);
+            this.checkBox2.Location = new System.Drawing.Point(155, 58);
             this.checkBox2.Name = "checkBox2";
             this.checkBox2.Size = new System.Drawing.Size(75, 19);
             this.checkBox2.TabIndex = 1;
@@ -114,9 +103,9 @@ namespace Rectify11ControlCenter
             // 
             this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(17, 24);
+            this.comboBox1.Location = new System.Drawing.Point(155, 29);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(180, 23);
+            this.comboBox1.Size = new System.Drawing.Size(192, 23);
             this.comboBox1.TabIndex = 0;
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
@@ -223,6 +212,15 @@ namespace Rectify11ControlCenter
             this.previewImage.TabIndex = 0;
             this.previewImage.TabStop = false;
             // 
+            // previewIMG
+            // 
+            this.previewIMG.BackgroundImage = global::Rectify11ControlCenter.Properties.Resources.bloom;
+            this.previewIMG.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.previewIMG.Location = new System.Drawing.Point(15, 28);
+            this.previewIMG.Name = "previewIMG";
+            this.previewIMG.Size = new System.Drawing.Size(125, 84);
+            this.previewIMG.TabIndex = 7;
+            // 
             // frmSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -242,7 +240,6 @@ namespace Rectify11ControlCenter
             this.Load += new System.EventHandler(this.frmSettings_Load);
             this.themesSec.ResumeLayout(false);
             this.themesSec.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.themePrev)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.deskImg)).EndInit();
@@ -261,13 +258,13 @@ namespace Rectify11ControlCenter
         private System.Windows.Forms.Label username;
         private System.Windows.Forms.GroupBox themesSec;
         private System.Windows.Forms.GroupBox miscSec;
-        private System.Windows.Forms.PictureBox themePrev;
         private System.Windows.Forms.CheckBox checkBox2;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.PictureBox deskImg;
         private System.Windows.Forms.Label Welcometext;
         private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.Panel previewIMG;
     }
 }
 

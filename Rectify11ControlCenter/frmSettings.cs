@@ -30,16 +30,7 @@ namespace Rectify11ControlCenter
             miscSec.Text = Rectify11ControlCenter.Controls.miscSection;
             checkBox2.Text = Rectify11ControlCenter.Controls.mfeChexbox;
             button1.Text = Rectify11ControlCenter.Controls.applyButton;
-            checkBox1.Text = Rectify11ControlCenter.Controls.runAtStart;
-            checkBox1.Checked = false;
             checkBox2.Checked = false;
-            RegistryKey key = Registry.CurrentUser.CreateSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run");
-            object o = key.GetValue("r11cpl");
-            if (o != null)
-            {
-                checkBox1.Checked = true;
-            }
-            key.Close();
             if (Process.GetProcessesByName("micaforeveryone").Length > 0)
             {
                 checkBox2.Checked = true;
@@ -59,6 +50,7 @@ namespace Rectify11ControlCenter
                 button1.Enabled = false;
             }
             deskImg.Image = Rectify11ControlCenter.Controls.DeskWall(Rectify11ControlCenter.Controls.appliedthemefile());
+            updatePreviewImg(Rectify11ControlCenter.Controls.appliedthemefile());
             addroundedCorners();
         }
 
@@ -71,7 +63,7 @@ namespace Rectify11ControlCenter
         {
             Rectangle r = new Rectangle(0, 0, deskImg.Width, deskImg.Height);
             System.Drawing.Drawing2D.GraphicsPath gp = new System.Drawing.Drawing2D.GraphicsPath();
-            int d = 7;
+            int d = 6;
             gp.AddArc(r.X, r.Y, d, d, 180, 90);
             gp.AddArc(r.X + r.Width - d, r.Y, d, d, 270, 90);
             gp.AddArc(r.X + r.Width - d, r.Y + r.Height - d, d, d, 0, 90);
@@ -126,6 +118,7 @@ namespace Rectify11ControlCenter
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             button1.Enabled = true;
+            updatePreviewImg(comboBox1.SelectedItem.ToString());
             if (comboBox1.SelectedItem == null)
             {
                 button1.Enabled = false;
@@ -134,6 +127,22 @@ namespace Rectify11ControlCenter
 
         private void closing(object sender, FormClosingEventArgs e)
         {
+        }
+
+        private void updatePreviewImg(string j)
+        {
+            foreach (FileInfo i in Rectify11ControlCenter.Controls.themefiles)
+            {
+                var MyIni = new IniFile(i.FullName);
+                string themename = MyIni.Read("DisplayName", "Theme");
+                if (j.ToLower() == themename.ToLower())
+                {
+                    if (File.Exists(i.FullName))
+                    {
+                        previewIMG.BackgroundImage = Rectify11ControlCenter.Controls.DeskWall(i.FullName);
+                    }
+                }
+            }
         }
     }
 }
