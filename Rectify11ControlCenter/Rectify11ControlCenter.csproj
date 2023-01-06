@@ -136,4 +136,9 @@
     <None Include="Resources\PreviewPane.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>if EXIST "$(SolutionDir)..\Rectify11Installer\"  (
+$(ProjectDir)ILRepack.exe  Rectify11ControlCenter.exe  /out:$(SolutionDir)..\Rectify11Installer\Resources\Rectify11ControlCenter.exe Microsoft.DotNet.PlatformAbstractions.dll
+)</PostBuildEvent>
+  </PropertyGroup>
 </Project>
