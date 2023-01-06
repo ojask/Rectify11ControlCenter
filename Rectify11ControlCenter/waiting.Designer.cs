@@ -82,6 +82,7 @@ namespace Rectify11ControlCenter
             this.MinimumSize = new System.Drawing.Size(224, 124);
             this.Name = "waiting";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.form_closing);
             this.Load += new System.EventHandler(this.waiting_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();

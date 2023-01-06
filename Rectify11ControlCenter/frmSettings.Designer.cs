@@ -85,7 +85,7 @@ namespace Rectify11ControlCenter
             // 
             this.linkLabel1.AutoSize = true;
             this.linkLabel1.LinkColor = System.Drawing.SystemColors.HotTrack;
-            this.linkLabel1.Location = new System.Drawing.Point(213, 175);
+            this.linkLabel1.Location = new System.Drawing.Point(15, 51);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(136, 15);
             this.linkLabel1.TabIndex = 6;
@@ -95,7 +95,7 @@ namespace Rectify11ControlCenter
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(13, 158);
+            this.button1.Location = new System.Drawing.Point(17, 155);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(79, 28);
             this.button1.TabIndex = 5;
@@ -106,9 +106,9 @@ namespace Rectify11ControlCenter
             // themePrev
             // 
             this.themePrev.Image = global::Rectify11ControlCenter.Properties.Resources.placeholder;
-            this.themePrev.Location = new System.Drawing.Point(182, 23);
+            this.themePrev.Location = new System.Drawing.Point(210, 22);
             this.themePrev.Name = "themePrev";
-            this.themePrev.Size = new System.Drawing.Size(164, 99);
+            this.themePrev.Size = new System.Drawing.Size(135, 99);
             this.themePrev.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.themePrev.TabIndex = 3;
             this.themePrev.TabStop = false;
@@ -116,7 +116,7 @@ namespace Rectify11ControlCenter
             // checkBox2
             // 
             this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(18, 53);
+            this.checkBox2.Location = new System.Drawing.Point(18, 130);
             this.checkBox2.Name = "checkBox2";
             this.checkBox2.Size = new System.Drawing.Size(75, 19);
             this.checkBox2.TabIndex = 1;
@@ -129,8 +129,9 @@ namespace Rectify11ControlCenter
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(17, 24);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(151, 23);
+            this.comboBox1.Size = new System.Drawing.Size(180, 23);
             this.comboBox1.TabIndex = 0;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // miscSec
             // 
@@ -252,6 +253,7 @@ namespace Rectify11ControlCenter
             this.MinimumSize = new System.Drawing.Size(813, 640);
             this.Name = "frmSettings";
             this.Text = "Rectify11 Control Center";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.closing);
             this.Load += new System.EventHandler(this.frmSettings_Load);
             this.themesSec.ResumeLayout(false);
             this.themesSec.PerformLayout();

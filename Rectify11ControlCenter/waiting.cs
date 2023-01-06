@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -14,16 +15,38 @@ namespace Rectify11ControlCenter
 {
     public partial class waiting : Form
     {
+        static readonly IntPtr HWND_TOPMOST = new IntPtr(-1);
+
+        static readonly IntPtr HWND_NOTOPMOST = new IntPtr(-2);
+
+        static readonly IntPtr HWND_TOP = new IntPtr(0);
+
+        static readonly IntPtr HWND_BOTTOM = new IntPtr(1);
+
+        const UInt32 SWP_NOSIZE = 0x0001;
+
+        const UInt32 SWP_NOMOVE = 0x0002;
+
+        const UInt32 TOPMOST_FLAGS = SWP_NOMOVE | SWP_NOSIZE;
+
+
+
+        [DllImport("user32.dll")]
+
+        [return: MarshalAs(UnmanagedType.Bool)]
+
+        public static extern bool SetWindowPos(IntPtr hWnd, IntPtr hWndInsertAfter, int X, int Y, int cx, int cy, uint uFlags);
         public waiting(string s, bool mfe)
         {
             InitializeComponent();
+            
             label1.Text = Rectify11ControlCenter.Controls.waitingtxt;
             applyTheme(s, mfe);
         }
 
         private void waiting_Load(object sender, EventArgs e)
         {
-
+            SetWindowPos(this.Handle, HWND_TOPMOST, 0, 0, 0, 0, TOPMOST_FLAGS);
         }
         private async void applyTheme(string name, bool useMfe)
         {
@@ -54,16 +77,22 @@ namespace Rectify11ControlCenter
                     }
                     else
                     {
-                        Interaction.Shell(Path.Combine(Variables.Variables.sys32Folder, "schtasks.exe") + " /delete /tn mfe", AppWinStyle.Hide);
+                        Interaction.Shell(Path.Combine(Variables.Variables.sys32Folder, "schtasks.exe") + " /delete /f /tn mfe", AppWinStyle.Hide);
                     }
                 }
             }
             else
             {
-                Interaction.Shell(Path.Combine(Variables.Variables.sys32Folder, "schtasks.exe") + " /delete /tn mfe", AppWinStyle.Hide);
+                Interaction.Shell(Path.Combine(Variables.Variables.sys32Folder, "schtasks.exe") + " /delete /f /tn mfe", AppWinStyle.Hide);
             }
+            this.FormClosing -= new FormClosingEventHandler(this.form_closing);
             this.Close();
             this.Dispose();
+        }
+
+        private void form_closing(object sender, FormClosingEventArgs e)
+        {
+            e.Cancel = true;
         }
     }
 }
