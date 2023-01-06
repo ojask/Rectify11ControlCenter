@@ -46,7 +46,7 @@ namespace Rectify11ControlCenter
                 }
                 else if (themename.ToLower().Contains("themeui"))
                 {
-                    comboBox1.Items.Add(i.FullName);
+                    comboBox1.Items.Add(i.Name);
                 }
             }
             comboBox1.SelectedItem = Rectify11ControlCenter.Controls.theme();

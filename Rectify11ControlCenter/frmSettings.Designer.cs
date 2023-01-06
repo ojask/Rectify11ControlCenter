@@ -104,7 +104,7 @@ namespace Rectify11ControlCenter
             this.panel2.BackColor = System.Drawing.Color.Transparent;
             this.panel2.BackgroundImage = global::Rectify11ControlCenter.Properties.Resources.LightPreview;
             this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel2.Location = new System.Drawing.Point(30, 10);
+            this.panel2.Location = new System.Drawing.Point(29, 10);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(64, 64);
             this.panel2.TabIndex = 0;

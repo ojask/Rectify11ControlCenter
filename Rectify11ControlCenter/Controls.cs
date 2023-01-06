@@ -96,7 +96,7 @@ namespace Rectify11ControlCenter
             y.AddRange(themedir2.GetFiles("*.theme"));
             return y;
         }
-        public static string waitingtxt = "Please wait...";
+        public static string waitingtxt = "Please wait";
         public static string runAtStart = "Run at every startup"; 
         #endregion
     }
