@@ -16,19 +16,19 @@ namespace Rectify11ControlCenter
 {
     public partial class waiting : Form
     {
-        public waiting(string s, bool mfe)
+        public waiting(string s, bool mfe, bool tabbed)
         {
             InitializeComponent();
 
             label1.Text = Rectify11ControlCenter.Controls.waitingtxt;
-            applyTheme(s, mfe);
+            applyTheme(s, mfe, tabbed);
         }
 
         private void waiting_Load(object sender, EventArgs e)
         {
             NativeMethods.SetTopMost(this.Handle);
         }
-        private async void applyTheme(string name, bool useMfe)
+        private async void applyTheme(string name, bool useMfe, bool tabbed)
         {
             var MyIni = new IniFile(name);
             string accent = MyIni.Read("ColorizationColor", "VisualStyles");
@@ -44,9 +44,9 @@ namespace Rectify11ControlCenter
 
             string themename = MyIni.Read("DisplayName", "Theme");
             
-            if (File.Exists(Path.Combine(Variables.Variables.Windir, "SecureUXHelper.exe")))
+            if (File.Exists(Path.Combine(Variables.Variables.r11Folder, "SecureUXHelper.exe")))
             {
-                await Task.Run(() => Interaction.Shell(Path.Combine(Variables.Variables.Windir, "SecureUXHelper.exe") + " apply " + '"' + themename + '"', AppWinStyle.Hide, true));
+                await Task.Run(() => Interaction.Shell(Path.Combine(Variables.Variables.r11Folder, "SecureUXHelper.exe") + " apply " + '"' + themename + '"', AppWinStyle.Hide, true));
             }
 
             await Task.Run(() => Interaction.Shell(Path.Combine(Variables.Variables.sys32Folder, "taskkill.exe") + " /f /im micaforeveryone.exe", AppWinStyle.Hide, true));
@@ -60,10 +60,13 @@ namespace Rectify11ControlCenter
                         Directory.Delete(Path.Combine(Environment.GetEnvironmentVariable("localappdata"), "Mica For Everyone"), true);
                     }
                     string themeFilename = Path.GetFileNameWithoutExtension(name);
-                    if (File.Exists(Path.Combine(Variables.Variables.Windir, "MicaForEveryone", "CONF", themeFilename + ".conf")))
+                    string confName = themeFilename;
+                    if (tabbed)
+                        confName = "T" + themeFilename;
+                    if (File.Exists(Path.Combine(Variables.Variables.Windir, "MicaForEveryone", "CONF", confName + ".conf")))
                     {
                         Interaction.Shell(Path.Combine(Variables.Variables.sys32Folder, "schtasks.exe") + " /create /tn mfe /xml " + Path.Combine(Variables.Variables.Windir, "MicaForEveryone", "XML", "mfe.xml"), AppWinStyle.Hide);
-                        File.Copy(Path.Combine(Variables.Variables.Windir, "MicaForEveryone", "CONF", themeFilename + ".conf"), Path.Combine(Variables.Variables.Windir, "MicaForEveryone", "MicaForEveryone.conf"), true);
+                        File.Copy(Path.Combine(Variables.Variables.Windir, "MicaForEveryone", "CONF", confName + ".conf"), Path.Combine(Variables.Variables.Windir, "MicaForEveryone", "MicaForEveryone.conf"), true);
                         await Task.Run(() => Interaction.Shell(Path.Combine(Variables.Variables.Windir, "MicaForEveryone", "MicaForEveryone.exe")));
                     }
                     else

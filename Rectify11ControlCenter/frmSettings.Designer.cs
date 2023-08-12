@@ -47,6 +47,7 @@ namespace Rectify11ControlCenter
             this.username = new System.Windows.Forms.Label();
             this.OSname = new System.Windows.Forms.Label();
             this.previewImage = new System.Windows.Forms.PictureBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.themesSec.SuspendLayout();
             this.previewIMG.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -57,6 +58,7 @@ namespace Rectify11ControlCenter
             // themesSec
             // 
             this.themesSec.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.themesSec.Controls.Add(this.checkBox1);
             this.themesSec.Controls.Add(this.button1);
             this.themesSec.Controls.Add(this.checkBox2);
             this.themesSec.Controls.Add(this.previewIMG);
@@ -84,7 +86,7 @@ namespace Rectify11ControlCenter
             this.checkBox2.AutoSize = true;
             this.checkBox2.Location = new System.Drawing.Point(155, 58);
             this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(75, 19);
+            this.checkBox2.Size = new System.Drawing.Size(77, 19);
             this.checkBox2.TabIndex = 1;
             this.checkBox2.Text = "chexBox2";
             this.checkBox2.UseVisualStyleBackColor = true;
@@ -116,7 +118,7 @@ namespace Rectify11ControlCenter
             this.linkLabel1.LinkColor = System.Drawing.SystemColors.HotTrack;
             this.linkLabel1.Location = new System.Drawing.Point(4, 179);
             this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(136, 15);
+            this.linkLabel1.Size = new System.Drawing.Size(133, 15);
             this.linkLabel1.TabIndex = 6;
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "⧉ SecureUX ThemeTool";
@@ -185,7 +187,7 @@ namespace Rectify11ControlCenter
             this.r11Ver.AutoSize = true;
             this.r11Ver.Location = new System.Drawing.Point(227, 155);
             this.r11Ver.Name = "r11Ver";
-            this.r11Ver.Size = new System.Drawing.Size(100, 15);
+            this.r11Ver.Size = new System.Drawing.Size(99, 15);
             this.r11Ver.TabIndex = 5;
             this.r11Ver.Text = "Rectify11 Version:";
             // 
@@ -194,7 +196,7 @@ namespace Rectify11ControlCenter
             this.themeApplied.AutoSize = true;
             this.themeApplied.Location = new System.Drawing.Point(227, 130);
             this.themeApplied.Name = "themeApplied";
-            this.themeApplied.Size = new System.Drawing.Size(47, 15);
+            this.themeApplied.Size = new System.Drawing.Size(46, 15);
             this.themeApplied.TabIndex = 4;
             this.themeApplied.Text = "Theme:";
             // 
@@ -221,7 +223,7 @@ namespace Rectify11ControlCenter
             this.OSname.AutoSize = true;
             this.OSname.Location = new System.Drawing.Point(227, 59);
             this.OSname.Name = "OSname";
-            this.OSname.Size = new System.Drawing.Size(67, 15);
+            this.OSname.Size = new System.Drawing.Size(66, 15);
             this.OSname.TabIndex = 1;
             this.OSname.Text = "OS Version:";
             // 
@@ -234,6 +236,16 @@ namespace Rectify11ControlCenter
             this.previewImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.previewImage.TabIndex = 0;
             this.previewImage.TabStop = false;
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(155, 83);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(86, 19);
+            this.checkBox1.TabIndex = 8;
+            this.checkBox1.Text = "Use Tabbed";
+            this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // frmSettings
             // 
@@ -281,6 +293,7 @@ namespace Rectify11ControlCenter
         private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.Panel previewIMG;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }
 

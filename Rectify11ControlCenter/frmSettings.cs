@@ -93,13 +93,13 @@ namespace Rectify11ControlCenter
                 string themename = MyIni.Read("DisplayName", "Theme");
                 if (!j.ToLower().Contains(".theme") && j.ToLower() == themename.ToLower())
                 {
-                    waiting waiting1 = new waiting(i.FullName, checkBox2.Checked);
+                    waiting waiting1 = new waiting(i.FullName, checkBox2.Checked, checkBox1.Checked);
                     waiting1.ShowDialog();
                     deskImg.Image = Rectify11ControlCenter.Controls.DeskWall(i.FullName);
                 }
                 else if (j.ToLower().Contains(".theme") && i.Name.ToLower() == j.ToLower())
                 {
-                    waiting waiting1 = new waiting(Path.Combine(Variables.Variables.Windir, "resources", "themes", j), checkBox2.Checked);
+                    waiting waiting1 = new waiting(Path.Combine(Variables.Variables.Windir, "resources", "themes", j), checkBox2.Checked, checkBox1.Checked);
                     waiting1.ShowDialog();
                     deskImg.Image = Rectify11ControlCenter.Controls.DeskWall(Path.Combine(Variables.Variables.Windir, "resources", "themes", j));
                 }
