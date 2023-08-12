@@ -42,11 +42,10 @@ namespace Rectify11ControlCenter
                 string themename = MyIni.Read("DisplayName", "Theme");
                 if (!themename.ToLower().Contains("themeui"))
                 {
-                    comboBox1.Items.Add(themename);
-                }
-                else if (themename.ToLower().Contains("themeui"))
-                {
-                    comboBox1.Items.Add(i.Name);
+                    if (themename.Contains("Rectify11"))
+                    {
+                        comboBox1.Items.Add(themename);
+                    }
                 }
             }
             comboBox1.SelectedItem = Rectify11ControlCenter.Controls.theme();
