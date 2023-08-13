@@ -73,6 +73,19 @@ namespace Rectify11ControlCenter
                     {
                         Interaction.Shell(Path.Combine(Variables.Variables.sys32Folder, "schtasks.exe") + " /delete /f /tn mfe", AppWinStyle.Hide);
                     }
+                    if (themeFilename.Contains("black"))
+                    {
+                        string amdorarm = "AMD";
+                        if (NativeMethods.IsArm64()) amdorarm = "ARM";
+                        Interaction.Shell(Path.Combine(Variables.Variables.sys32Folder, "schtasks.exe") + " /create /tn micafix /xml " + Path.Combine(Variables.Variables.Windir, "MicaForEveryone", "XML", "micafix" + amdorarm + "64.xml"), AppWinStyle.Hide);
+                        await Task.Run(() => Interaction.Shell(Path.Combine(Variables.Variables.Windir, "MicaForEveryone", "EF"+amdorarm.ToLower()+"64", "ExplorerFrame.exe")));
+
+                    }
+                    else
+                    {
+                        Interaction.Shell(Path.Combine(Variables.Variables.sys32Folder, "schtasks.exe") + " /end /tn micafix ", AppWinStyle.Hide);
+                        Interaction.Shell(Path.Combine(Variables.Variables.sys32Folder, "schtasks.exe") + " /delete /f /tn micafix ", AppWinStyle.Hide);
+                    }
                 }
             }
             else

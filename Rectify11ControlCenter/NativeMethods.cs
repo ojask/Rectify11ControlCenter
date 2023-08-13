@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Reflection;
 using System.Runtime.InteropServices;
+using System.Diagnostics;
 
 namespace Rectify11ControlCenter
 {
@@ -35,6 +36,33 @@ namespace Rectify11ControlCenter
         public static void SetTopMost(IntPtr hwnd)
         {
             SetWindowPos(hwnd, HWND_TOPMOST, 0, 0, 0, 0, TOPMOST_FLAGS);
+        }
+        [DllImport("kernel32.dll", SetLastError = true)]
+        private static extern bool IsWow64Process2(
+            IntPtr process,
+            out ushort processMachine,
+            out ushort nativeMachine
+        );
+        public static bool IsArm64()
+        {
+            var handle = Process.GetCurrentProcess().Handle;
+            try
+            {
+                IsWow64Process2(handle, out var processMachine, out var nativeMachine);
+                if (nativeMachine == 0xaa64)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch
+            {
+
+                return false;
+            }
         }
     }
     class IniFile
