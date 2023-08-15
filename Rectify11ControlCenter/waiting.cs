@@ -85,6 +85,8 @@ namespace Rectify11ControlCenter
                     {
                         Interaction.Shell(Path.Combine(Variables.Variables.sys32Folder, "schtasks.exe") + " /end /tn micafix ", AppWinStyle.Hide);
                         Interaction.Shell(Path.Combine(Variables.Variables.sys32Folder, "schtasks.exe") + " /delete /f /tn micafix ", AppWinStyle.Hide);
+                        await Task.Run(() => Interaction.Shell(Path.Combine(Variables.Variables.sys32Folder, "taskkill.exe") + " /f /im ExplorerFrame.exe", AppWinStyle.Hide, true));
+
                     }
                 }
             }
