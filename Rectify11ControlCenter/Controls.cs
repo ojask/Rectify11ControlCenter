@@ -84,7 +84,7 @@ namespace Rectify11ControlCenter
         #endregion
         #region Main
         public static string themeSection = "Change Theme";
-        public static string miscSection = "Miscellaneous";
+        public static string miscSection = "Menus";
         public static string mfeChexbox = "Use MicaForEveryone";
         public static string applyButton = "Apply";
         public static DirectoryInfo themedir = new DirectoryInfo(Path.Combine(Variables.Variables.Windir, "resources", "themes"));

@@ -78,6 +78,7 @@
     <Compile Include="NativeMethods.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ShellLink.cs" />
     <Compile Include="Variables.cs" />
     <Compile Include="waiting.cs">
       <SubType>Form</SubType>
@@ -119,6 +120,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="r11.ico" />
+    <None Include="Resources\config2.txt" />
+    <None Include="Resources\config1.txt" />
     <None Include="Resources\installprogress.gif" />
     <None Include="Resources\bloom.png" />
     <None Include="Resources\previewIcon.png" />

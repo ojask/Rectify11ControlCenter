@@ -19,7 +19,7 @@ namespace Rectify11ControlCenter.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -67,6 +67,79 @@ namespace Rectify11ControlCenter.Properties {
             get {
                 object obj = ResourceManager.GetObject("bloom", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to settings
+        ///{
+        ///	priority=1
+        ///	exclude.where = !process.is_explorer
+        ///	showdelay = 100
+        ///	// Options to allow modification of system items
+        ///	modify.remove.duplicate=1
+        ///	tip
+        ///	{
+        ///		enabled=1
+        ///		opacity=100
+        ///		width=400
+        ///		radius=1
+        ///		time=1.25
+        ///		padding=[10,10]
+        ///	}
+        ///}
+        ///theme
+        ///{
+        ///	name=&quot;modern&quot;
+        ///}
+        ///import &apos;imports/theme.nss&apos;
+        ///import &apos;imports/images.nss&apos;
+        ///
+        ///import &apos;imports/modify.nss&apos;
+        ///modify(where=this.title.length &gt; 15 menu=title.more_options)
+        ///
+        ///menu(mode=&quot;multiple&quot; title=&quot;Pin/Unpin&quot; image=icon.pin) {}
+        ///menu(mod [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string config1 {
+            get {
+                return ResourceManager.GetString("config1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to settings
+        ///{
+        ///	priority=1
+        ///	exclude.where = !process.is_explorer
+        ///	showdelay = 100
+        ///	// Options to allow modification of system items
+        ///	modify.remove.duplicate=1
+        ///	tip
+        ///	{
+        ///		enabled=1
+        ///		opacity=100
+        ///		width=400
+        ///		radius=1
+        ///		time=1.25
+        ///		padding=[10,10]
+        ///	}
+        ///}
+        ///theme
+        ///{
+        ///	name=&quot;modern&quot;
+        ///}
+        ///import &apos;imports/theme.nss&apos;
+        ///import &apos;imports/images.nss&apos;
+        ///
+        ///import &apos;imports/modify.nss&apos;
+        ///
+        ///menu(mode=&quot;multiple&quot; title=&quot;Pin/Unpin&quot; image=icon.pin) {}
+        ///menu(mode=&quot;multiple&quot; title=title.more_options image=icon.more_options) [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string config2 {
+            get {
+                return ResourceManager.GetString("config2", resourceCulture);
             }
         }
         
