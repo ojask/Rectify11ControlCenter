@@ -246,12 +246,13 @@ namespace Rectify11ControlCenter
             this.checkBox1.TabIndex = 8;
             this.checkBox1.Text = "Use Tabbed";
             this.checkBox1.UseVisualStyleBackColor = true;
-            // 
-            // frmSettings
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.Window;
+			// 
+			// frmSettings
+			// 
+			this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+			this.AutoSize = true;
+			this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(797, 576);
             this.Controls.Add(this.miscSec);
             this.Controls.Add(this.themesSec);

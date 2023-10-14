@@ -59,12 +59,13 @@ namespace Rectify11ControlCenter
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(156, 52);
             this.panel1.TabIndex = 2;
-            // 
-            // waiting
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.Control;
+			// 
+			// waiting
+			// 
+			this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            this.AutoSize = true;
+			this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(147, 40);
             this.Controls.Add(this.panel1);
             this.Cursor = System.Windows.Forms.Cursors.Arrow;
